@@ -1,0 +1,268 @@
+{
+  "pageProps":{
+    "product":{
+      "__typename":"StoreProduct",
+      "ageGate":false,
+      "appStoreUrl":null,
+      "availability":[
+        "Reserve",
+        "Em breve"
+      ],
+      "backgroundColor":"0a0508",
+      "capacity":null,
+      "configurableOptions":null,
+      "containsBattery":false,
+      "contentDescriptors":[
+
+      ],
+      "contentRating":{
+        "__typename":"ContentRating",
+        "id":"15Zi8rq6BYxZOeWK7N1sWd",
+        "locale":"pt_BR",
+        "code":"rp",
+        "label":"Verifique a classificaÃ§Ã£o indicativa",
+        "requiresAgeGate":false,
+        "system":"CLASSIND"
+      },
+      "detailPageUrl":"https://www.nintendo.com/pt-br/store/products/pokemon-scarlet-and-pokemon-violet-double-pack-switch/",
+      "displayChokingHazard":false,
+      "displayProp65":false,
+      "manufacturer":null,
+      "countryOfManufacture":null,
+      "countryOfOrigin":null,
+      "demoNsuid":null,
+      "demoType":null,
+      "description":"<p><strong>Importante: a versÃ£o para download deste pacote duplo inclui a versÃ£o digital do jogo PokÃ©mon Scarlet e do jogo PokÃ©mon Violet e ambos os jogos serÃ£o baixados automaticamente para o console vinculado Ã  conta Nintendo na qual a compra foi feita. Apenas um cÃ³digo de download serÃ¡ fornecido para baixar ambos os jogos na compra do pacote PokÃ©mon Scarlet e PokÃ©mon Violet Double Pack.</strong></p>\n<p>A versÃ£o fÃ­sica inclui uma cÃ³pia fÃ­sica do jogo PokÃ©mon Scarlet e uma cÃ³pia fÃ­sica do jogo PokÃ©mon Violet. Se vocÃª comprar tanto a versÃ£o fÃ­sica quanto a versÃ£o digital do pacote duplo, vocÃª receberÃ¡ como bÃ´nus 200 PokÃ© Ballâ„¢ disponÃ­veis atravÃ©s de cÃ³digos de download*que podem ser inseridos no recurso â€œthe Mystery Gift\"** no jogo!</p>\n<p><strong>Embarque em uma nova aventura em mundo aberto de PokÃ©monâ„¢</strong></p>\n<p>Capture, lute e treine contra PokÃ©mon na regiÃ£o de Paldea, uma terra vasta e ampla repleta de lagos, picos elevados, desertos, cidades pequenas e cidades extensas. Explore o mundo aberto no seu prÃ³prio ritmo e atravesse terra, Ã¡gua e ar montando no PokÃ©mon LendÃ¡rio Koraidon em PokÃ©mon Scarlet e Miraidon em PokÃ©mon Violet. Escolha entre Sprigatito, Fuecoco ou Quaxly para ser seu primeiro parceiro PokÃ©mon antes de partir em aventura por Paldea.</p>\n<p><strong>Escolha seu prÃ³prio caminho enquanto luta pela classificaÃ§Ã£o CampeÃ£o, enfrenta os PokÃ©mon Titan e luta contra o Team Star</strong></p>\n<p>NÃ£o hÃ¡ um caminho estipulado em sua aventura em Paldea, entÃ£o vocÃª pode se aventurar livremente em sua caÃ§a ao tesouro (Treasure Hunt) que consiste em trÃªs grandes histÃ³rias. Em Victory Road, vocÃª desafiarÃ¡ GinÃ¡sios em lugares diferentes e terÃ¡ como objetivo alcanÃ§ar a classificaÃ§Ã£o CampeÃ£o. Em Path of Legends, enfrentarÃ¡ gigantescos PokÃ©mon Titan que guardam ingredientes raros. E em â˜… Starfall Street â˜…, vocÃª usarÃ¡ a nova funcionalidade Auto Battle para enfrentar os soldados do Team Star da sua academia e lutar contra seus chefÃµes.</p>\n<p><strong>Encontre PokÃ©mon que brilham e reluzem graÃ§as ao fenÃ´meno Terastal</strong></p>\n<p>Os PokÃ©mon da regiÃ£o de Paldea tÃªm a habilidade de Terastalizar para obter poderes especiais. Cada PokÃ©mon tem um tipo Tera, que fica desativado atÃ© que o fenÃ´meno Terastal aconteÃ§a. Por exemplo, a maioria dos Eevee terÃ£o um tipo Tera normal, mas alguns terÃ£o o tipo Ã¡gua! Quando um PokÃ©mon que Terastalizou usa um golpe que combina com o seu tipo Tera e pelo menos um dos seus tipos originais, o golpe terÃ¡ ainda mais potÃªncia! O fenÃ´meno Terastal Ã© a chave para a vitÃ³ria ou a derrota em batalhas na regiÃ£o de Paldea.</p>",
+      "descriptionImage":{
+        "__typename":"CloudinaryAsset",
+        "publicId":"ncom/en_US/games/switch/p/pokemon-scarlet-switch/description-image",
+        "resourceType":"image",
+        "type":"upload"
+      },
+      "disclaimer":"<p>Uma assinatura do Nintendo Switch Online (vendida separadamente) e uma conta Nintendo sÃ£o necessÃ¡rias para partidas online. Este jogo nÃ£o Ã© compatÃ­vel com a funcionalidade de cÃ³pia de seguranÃ§a na nuvem. NÃ£o disponÃ­vel em todos os paÃ­ses. Acesso Ã  internet Ã© necessÃ¡rio para funcionalidades online. Termos se aplicam. nintendo.com/switch-online</p>\n<p>*Os cÃ³digos serÃ£o incluÃ­dos em um folheto na versÃ£o fÃ­sica ou enviados para o endereÃ§o de e-mail vinculado Ã  conta Nintendo na qual a compra da versÃ£o digital foi realizada. Uma conexÃ£o Ã  internet e uma conta Nintendo sÃ£o necessÃ¡rias para resgatar os itens no jogo. Uma assinatura do Nintendo Switch Online nÃ£o Ã© necessÃ¡ria. Cada item sÃ³ pode ser resgatado uma vez. Esses cÃ³digos nÃ£o expiram.</p>\n<p>**A opÃ§Ã£o â€œMystery Giftâ€ pode ser encontrada no menu do PokÃ© Portal (que pode ser acessado no menu X) apÃ³s o recurso ser desbloqueado no jogo PokÃ©mon Scarlet ou PokÃ©mon Violet. (Isso acontece apÃ³s jogar por 1h a 1,5h, porÃ©m o tempo de jogo individual pode variar.) Uma conexÃ£o Ã  internet e uma conta Nintendo sÃ£o necessÃ¡rias para resgatar os itens no jogo. Uma assinatura do Nintendo Switch Online nÃ£o Ã© necessÃ¡ria. Cada item sÃ³ pode ser resgatado uma vez.</p>\n<p>A opÃ§Ã£o de idioma no jogo para espanhol Ã© espanhol (Espanha).</p>\n<p>Â© 2022 PokÃ©mon. Â© 1995-2022 Nintendo/Creatures Inc./GAME FREAK inc. PokÃ©mon and Nintendo Switch are trademarks of Nintendo. Â© Nintendo.</p>",
+      "dlcType":null,
+      "enableRetailCrawler":true,
+      "eshopDetails":{
+        "__typename":"EshopDetails",
+        "isPurchased":false,
+        "isPreordered":false,
+        "isPreorderable":true,
+        "isPurchasable":true,
+        "goldPoints":598,
+        "purchaseUrl":"https://ec.nintendo.com/bundle_purchase_confirm?bundle=70070000014505"
+      },
+      "exclusive":false,
+      "facets":{
+        "__typename":"Facets",
+        "corePlatforms":[
+          "Nintendo Switch"
+        ]
+      },
+      "googlePlayUrl":null,
+      "genres":[
+        {
+          "__typename":"GameGenre",
+          "code":"ADVENTURE",
+          "label":"Aventura"
+        },
+        {
+          "__typename":"GameGenre",
+          "code":"ROLE_PLAYING",
+          "label":"RPG"
+        }
+      ],
+      "headline":"Um pacote duplo contendo os jogos PokÃ©monâ„¢ Scarlet e PokÃ©monâ„¢ Violet estÃ¡ disponÃ­vel para reserva na versÃ£o digital para download e na versÃ£o fÃ­sica.",
+      "isSalableQty":true,
+      "locale":"pt_BR",
+      "metaDescription":"Importante: a versÃ£o para download deste pacote duplo inclui a versÃ£o digital do jogo PokÃ©mon Scarlet e do jogo PokÃ©mon Violet e ambos os jogos serÃ£o baixados automaticamente para o console vinculado Ã  conta Nintendo na qual a compra foi feita. Apenas umâ€¦",
+      "metaKeyword":null,
+      "metaTitle":"PokÃ©monâ„¢ Scarlet and PokÃ©monâ„¢ Violet Double Pack ",
+      "name":"PokÃ©monâ„¢ Scarlet and PokÃ©monâ„¢ Violet Double Pack ",
+      "nsoFeatures":[
+        {
+          "__typename":"NsoFeature",
+          "code":"ONLINE_PLAY",
+          "label":"Online Play"
+        }
+      ],
+      "nsuid":"70070000014505",
+      "id":"MTI1MjQ4",
+      "numberOfPlayers":null,
+      "officialSite":"https://scarletviolet.pokemon.com/pt-br/",
+      "productType":"SIMPLE",
+      "productImage":{
+        "__typename":"CloudinaryAsset",
+        "publicId":"ncom/pt_BR/dlc/switch-dlc/pokemon-violet-dlc/rom-bundle/pokemon-scarlet-and-pokemon-violet-double-pack/image",
+        "resourceType":"image",
+        "type":"upload"
+      },
+      "parentNsuid":"70010000053971,70010000053966",
+      "platform":{
+        "__typename":"Platform",
+        "label":"Nintendo Switch",
+        "code":"NINTENDO_SWITCH"
+      },
+      "platinumPoints":null,
+      "playModes":[
+        {
+          "__typename":"PlayMode",
+          "code":"HANDHELD_MODE",
+          "label":"Modo portÃ¡til"
+        },
+        {
+          "__typename":"PlayMode",
+          "code":"TABLETOP_MODE",
+          "label":"Modo semiportÃ¡til"
+        },
+        {
+          "__typename":"PlayMode",
+          "code":"TV_MODE",
+          "label":"Modo TV"
+        }
+      ],
+      "playersMax":1,
+      "playersMaxLocal":4,
+      "playersMaxOnline":4,
+      "playersMin":1,
+      "playersMinLocal":2,
+      "playersMinOnline":1,
+      "prePurchase":false,
+      "purchasableQty":10,
+      "maxQtyAllowedInCart":10000,
+      "productCode":"HACYA9CZA",
+      "productGallery":[
+        {
+          "__typename":"CloudinaryAsset",
+          "publicId":"ncom/en_US/games/switch/p/pokemon-scarlet-switch/Video/2022_6_1_Pokemon_Scarlet_Violet_Release_Date_Announcement_Four_Languages-PT",
+          "resourceType":"video",
+          "type":"upload"
+        },
+        {
+          "__typename":"CloudinaryAsset",
+          "publicId":"ncom/pt_BR/dlc/switch-dlc/pokemon-violet-dlc/rom-bundle/pokemon-scarlet-and-pokemon-violet-double-pack/screenshot01",
+          "resourceType":"image",
+          "type":"upload"
+        },
+        {
+          "__typename":"CloudinaryAsset",
+          "publicId":"ncom/pt_BR/dlc/switch-dlc/pokemon-violet-dlc/rom-bundle/pokemon-scarlet-and-pokemon-violet-double-pack/screenshot02",
+          "resourceType":"image",
+          "type":"upload"
+        },
+        {
+          "__typename":"CloudinaryAsset",
+          "publicId":"ncom/pt_BR/dlc/switch-dlc/pokemon-violet-dlc/rom-bundle/pokemon-scarlet-and-pokemon-violet-double-pack/screenshot03",
+          "resourceType":"image",
+          "type":"upload"
+        },
+        {
+          "__typename":"CloudinaryAsset",
+          "publicId":"ncom/pt_BR/dlc/switch-dlc/pokemon-violet-dlc/rom-bundle/pokemon-scarlet-and-pokemon-violet-double-pack/screenshot04",
+          "resourceType":"image",
+          "type":"upload"
+        },
+        {
+          "__typename":"CloudinaryAsset",
+          "publicId":"ncom/pt_BR/dlc/switch-dlc/pokemon-violet-dlc/rom-bundle/pokemon-scarlet-and-pokemon-violet-double-pack/screenshot05",
+          "resourceType":"image",
+          "type":"upload"
+        },
+        {
+          "__typename":"CloudinaryAsset",
+          "publicId":"ncom/pt_BR/dlc/switch-dlc/pokemon-violet-dlc/rom-bundle/pokemon-scarlet-and-pokemon-violet-double-pack/screenshot06",
+          "resourceType":"image",
+          "type":"upload"
+        }
+      ],
+      "prices":{
+        "__typename":"PriceRange",
+        "minimum":{
+          "__typename":"Price",
+          "amountOff":0,
+          "currency":"BRL",
+          "discounted":false,
+          "finalPrice":598,
+          "regularPrice":598
+        },
+        "maximum":null
+      },
+      "qtyAllowedPerCustomer":null,
+      "relatedProducts":[
+
+      ],
+      "releaseDate":"2022-11-18T00:00:00.000Z",
+      "releaseDateDisplay":null,
+      "requiresLogin":false,
+      "requiresCoupon":false,
+      "requiresSubscription":false,
+      "romFileSize":"21474836480",
+      "series":null,
+      "size":null,
+      "sizeChart":null,
+      "stockStatus":"IN_STOCK",
+      "sku":"7700014505",
+      "softwareDeveloper":"GAME FREAK inc.",
+      "softwarePublisher":"Nintendo",
+      "soldOutTemporary":false,
+      "soldOutPermanent":false,
+      "supportedLanguages":[
+        "AlemÃ£o",
+        "ChinÃªs Simplificado",
+        "Coreano",
+        "Espanhol",
+        "FrancÃªs",
+        "InglÃªs",
+        "JaponÃªs"
+      ],
+      "switchRequired":false,
+      "topLegalDisclaimer":null,
+      "topLevelCategory":{
+        "__typename":"TopLevelCategory",
+        "code":"GAMES",
+        "label":"Jogos"
+      },
+      "upc":"00045496599058",
+      "urlKey":"pokemon-scarlet-and-pokemon-violet-double-pack-switch",
+      "variants":null
+    },
+    "configurable":null,
+    "locale":"pt-br",
+    "preview":false,
+    "previewData":null,
+    "meta":{
+      "title":"PokÃ©monâ„¢ Scarlet and PokÃ©monâ„¢ Violet Double Pack  para Nintendo Switch - Site Oficial da Nintendo",
+      "description":"Importante: a versÃ£o para download deste pacote duplo inclui a versÃ£o digital do jogo PokÃ©mon Scarlet e do jogo PokÃ©mon Violet e ambos os jogos serÃ£o baixados automaticamente para o console vinculado Ã  conta Nintendo na qual a compra foi feita. Apenas umâ€¦"
+    },
+    "analytics":{
+      "pageType":"Game Detail Page",
+      "pageName":"PokÃ©monâ„¢ Scarlet and PokÃ©monâ„¢ Violet Double Pack ",
+      "pageCategory":"Store:Products",
+      "product":{
+        "name":"PokÃ©monâ„¢ Scarlet and PokÃ©monâ„¢ Violet Double Pack ",
+        "sku":"7700014505",
+        "nsuid":"70070000014505"
+      }
+    },
+    "openGraph":{
+      "image":"https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/pt_BR/dlc/switch-dlc/pokemon-violet-dlc/rom-bundle/pokemon-scarlet-and-pokemon-violet-double-pack/image"
+    },
+    "linkedData":{
+      "@type":"Product",
+      "name":"PokÃ©monâ„¢ Scarlet and PokÃ©monâ„¢ Violet Double Pack ",
+      "image":"https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/pt_BR/dlc/switch-dlc/pokemon-violet-dlc/rom-bundle/pokemon-scarlet-and-pokemon-violet-double-pack/image",
+      "description":"Importante: a versÃ£o para download deste pacote duplo inclui a versÃ£o digital do jogo PokÃ©mon Scarlet e do jogo PokÃ©mon Violet e ambos os jogos serÃ£o baixados automaticamente para o console vinculado Ã  conta Nintendo na qual a compra foi feita. Apenas umâ€¦",
+      "brand":"Nintendo",
+      "category":"Jogos",
+      "sku":"7700014505",
+      "offers":{
+        "@type":"Offer",
+        "url":"https://www.nintendo.com/pt-br/store/products/pokemon-scarlet-and-pokemon-violet-double-pack-switch/",
+        "priceCurrency":"BRL",
+        "price":"598.00",
+        "availability":"https://schema.org/InStock",
+        "itemCondition":"https://schema.org/NewCondition"
+      }
+    }
+  },
+  "__N_SSP":true
+}
