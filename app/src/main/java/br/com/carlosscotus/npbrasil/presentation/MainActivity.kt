@@ -46,4 +46,13 @@ class MainActivity : AppCompatActivity() {
 
         DynamicColors.applyToActivitiesIfAvailable(application)
     }
+
+    fun setTitle(text: String) {
+        binding.toolbar.title = text
+        binding.collapsingToolbar.title = text
+    }
+
+    fun setCollapsingToolbar(isCollapse: Boolean = true, animated: Boolean) {
+        binding.appbar.setExpanded(isCollapse, animated)
+    }
 }

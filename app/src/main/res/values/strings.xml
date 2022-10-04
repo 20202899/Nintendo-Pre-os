@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NPBrasil</string>
+    <string name="app_name">Nintendo Preços</string>
     <string name="action_settings">Settings</string>
     <string name="menu_title_home">Home</string>
     <string name="menu_title_favorites">Favoritos</string>
@@ -21,5 +21,9 @@
     <string name="title_search">Pesquisar</string>
     <string name="title_detail">Detalhes</string>
     <string name="menu_favorite">Favoritar</string>
+    <string name="chip_title_all">Tudo</string>
+    <string name="chip_title_sales">Promoções</string>
+    <string name="chip_title_news">Novos lançamentos</string>
+    <string name="chip_title_avaiable">Disponibilidade</string>
     <!-- Strings used for fragments for navigation -->
 </resources>

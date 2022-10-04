@@ -30,6 +30,7 @@
     </style>
 
     <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemRippleColor">@color/md_theme_dark_surfaceVariant</item>
         <item name="materialThemeOverlay">@style/Overlay</item>
     </style>
 

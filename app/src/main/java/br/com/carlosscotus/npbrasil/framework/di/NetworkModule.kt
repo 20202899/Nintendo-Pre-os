@@ -2,7 +2,6 @@ package br.com.carlosscotus.npbrasil.framework.di
 
 import br.com.carlosscotus.npbrasil.BuildConfig
 import br.com.carlosscotus.npbrasil.framework.network.NintendoEshopApi
-import br.com.carlosscotus.npbrasil.framework.network.interceptor.HeadersInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +11,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-import kotlin.math.log
 
 @Module
 @InstallIn(SingletonComponent::class)

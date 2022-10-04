@@ -1,4 +1,6 @@
-package br.com.carlosscotus.npbrasil.framework.network.response
+package br.com.carlosscotus.npbrasil.framework.network.data
+
+import br.com.carlosscotus.core.data.GameFilters
 
 data class RequestResponse(
     val requests: List<RequestBody>
@@ -26,8 +28,3 @@ data class RequestBody(
     val hitsPerPage: Int = 40,
     val page: Int = 0
 )
-
-enum class GameFilters(val value: String) {
-    SWITCH_ONLY("corePlatforms:Nintendo Switch"),
-    SWITCH_SALES("topLevelFilters:Promoções")
-}

@@ -1,9 +1,9 @@
 package br.com.carlosscotus.npbrasil.framework.network
 
 import br.com.carlosscotus.npbrasil.BuildConfig
-import br.com.carlosscotus.npbrasil.framework.network.response.GameDataWrapperResponse
-import br.com.carlosscotus.npbrasil.framework.network.response.GameDetailDataWrapperResponse
-import br.com.carlosscotus.npbrasil.framework.network.response.RequestResponse
+import br.com.carlosscotus.npbrasil.framework.network.data.GameDataWrapperResponse
+import br.com.carlosscotus.npbrasil.framework.network.data.GameDetailDataWrapperResponse
+import br.com.carlosscotus.npbrasil.framework.network.data.RequestResponse
 import retrofit2.http.*
 
 interface NintendoEshopApi {

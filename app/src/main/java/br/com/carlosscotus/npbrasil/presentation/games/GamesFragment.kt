@@ -1,21 +1,28 @@
 package br.com.carlosscotus.npbrasil.presentation.games
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.MenuProvider
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.*
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.TransitionInflater
-import br.com.carlosscotus.npbrasil.BuildConfig
+import br.com.carlosscotus.core.data.GameFilters
 import br.com.carlosscotus.npbrasil.R
 import br.com.carlosscotus.npbrasil.databinding.FragmentGamesBinding
 import br.com.carlosscotus.npbrasil.framework.imageloader.ImageLoader
 import br.com.carlosscotus.npbrasil.presentation.detail.GameDetailArg
+import br.com.carlosscotus.npbrasil.presentation.detail.setTitle
+import com.google.android.material.chip.ChipGroup
+import com.google.android.material.internal.CheckableGroup
+import com.google.android.material.transition.MaterialArcMotion
+import com.google.android.material.transition.MaterialContainerTransform
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -33,6 +40,17 @@ class GamesFragment : Fragment() {
     @Inject
     lateinit var imageLoader: ImageLoader
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        sharedElementReturnTransition = MaterialContainerTransform().apply {
+            setPathMotion(MaterialArcMotion())
+            scrimColor = Color.TRANSPARENT
+        }
+
+        observerCollect()
+    }
+
     private val gamesAdapter: GamesAdapter by lazy {
         GamesAdapter(imageLoader) { game, view ->
             game?.run {
@@ -46,7 +64,7 @@ class GamesFragment : Fragment() {
                         ),
                         game.title
                     ),
-                    FragmentNavigatorExtras(view to getString(R.string.shared_item_transition))
+                    FragmentNavigatorExtras(view to view.transitionName)
                 )
             }
         }
@@ -56,28 +74,26 @@ class GamesFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = if (_binding == null) {
-        FragmentGamesBinding.inflate(inflater, container, false)
-            .apply {
-                _binding = this
-            }.root.also {
-                observerCollect()
-            }
-    } else {
-        binding.root
-    }
+    ) = FragmentGamesBinding.inflate(inflater, container, false)
+        .apply {
+            _binding = this
+        }.root
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setTitle(getString(R.string.title_home))
+
         setupMenu()
         setupRecyclerview()
+        setLoadObserverDetailUIState()
         setupCardViewConnect()
         observerAdapterState()
     }
 
     private fun setupRecyclerview() {
+        postponeEnterTransition()
         with(binding.recyclerview) {
             setHasFixedSize(false)
             adapter = gamesAdapter.withLoadStateFooter(
@@ -85,11 +101,14 @@ class GamesFragment : Fragment() {
                     gamesAdapter.retry()
                 }
             )
+            (view?.parent as? ViewGroup)?.doOnPreDraw {
+                startPostponedEnterTransition()
+            }
         }
     }
 
     private fun setupMenu() {
-        activity?.addMenuProvider(object : MenuProvider {
+        requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_top, menu)
             }
@@ -103,6 +122,24 @@ class GamesFragment : Fragment() {
     private fun setupCardViewConnect() {
         binding.fragmentGameError.refresh.setOnClickListener {
             gamesAdapter.refresh()
+        }
+    }
+
+    private fun setLoadObserverDetailUIState() {
+        binding.chipGroup.setOnCheckedStateChangeListener { _, checkedIds ->
+            viewModel.gameSaveFilterActionUIStateLiveData.saveFilter(
+                if (checkedIds.first() == R.id.chip_all) {
+                    GameFilters.SWITCH_ONLY
+                } else GameFilters.SWITCH_SALES
+            )
+        }
+
+        viewModel.state.observe(viewLifecycleOwner) { state ->
+            when(state) {
+                is GameSaveFilterActionUIStateLiveData.UIState.Success -> {
+                    gamesAdapter.submitData(viewLifecycleOwner.lifecycle, state.data)
+                }
+            }
         }
     }
 
@@ -135,6 +172,12 @@ class GamesFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        _binding = null
     }
 
     companion object {

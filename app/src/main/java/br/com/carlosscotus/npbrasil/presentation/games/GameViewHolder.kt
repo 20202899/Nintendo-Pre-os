@@ -32,8 +32,10 @@ class GameViewHolder private constructor(
             chipDiscount.text = game.discountPercentage
             hideDiscountInfo(game.hasDiscount)
 
-            imageGame.setOnClickListener { _ ->
-                click(it, itemView)
+            imageGame.transitionName = game.id
+
+            itemView.setOnClickListener { _ ->
+                click(it, imageGame)
             }
         }
     }

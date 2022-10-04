@@ -2,18 +2,16 @@ package br.com.carlosscotus.npbrasil.framework.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import br.com.carlosscotus.core.data.GameFilters
 import br.com.carlosscotus.core.data.repository.GamesRemoteDataSource
 import br.com.carlosscotus.core.domain.model.Game
-import br.com.carlosscotus.npbrasil.framework.network.response.GameDataWrapperResponse
-import br.com.carlosscotus.npbrasil.framework.network.response.GameFilters
-import br.com.carlosscotus.npbrasil.framework.network.response.RequestBody
-import br.com.carlosscotus.npbrasil.framework.network.response.RequestResponse
+import br.com.carlosscotus.npbrasil.framework.network.data.*
 import br.com.carlosscotus.npbrasil.utils.DoubleUtil
 import br.com.carlosscotus.npbrasil.utils.DoubleUtil.formatCurrency
-import okhttp3.ResponseBody
 
 class GamesPagingSource(
-    private val remoteDataSource: GamesRemoteDataSource<RequestResponse, GameDataWrapperResponse>
+    private val remoteDataSource: GamesRemoteDataSource<RequestResponse, GameDataWrapperResponse>,
+    private val gameFilters: GameFilters
 ) : PagingSource<Int, Game>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Game> {
@@ -24,7 +22,7 @@ class GamesPagingSource(
                 RequestResponse(
                     listOf(
                         RequestBody(
-                            facetFilters = listOf(GameFilters.SWITCH_ONLY.value),
+                            facetFilters = listOf(gameFilters.value),
                             hitsPerPage = NUMBER_PER_PAGE,
                             page = page
                         )
@@ -73,8 +71,6 @@ class GamesPagingSource(
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
-
-    companion object {
-        const val NUMBER_PER_PAGE = 20
-    }
 }
+
+const val NUMBER_PER_PAGE = 20

@@ -11,6 +11,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:visibility="gone"
             android:id="@+id/image_game_shimmer"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -20,6 +21,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/game_price_shimmer"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_game_shimmer" />
+
+        <TextView
+            android:id="@+id/game_price_discount_shimmer"
+            android:background="@android:color/darker_gray"
+            android:layout_marginHorizontal="@dimen/fab_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/game_price_shimmer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/game_price_shimmer"
+            app:layout_constraintTop_toTopOf="@+id/game_price_shimmer" />
 
         <TextView
             android:id="@+id/game_description_shimmer"
@@ -32,7 +59,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_game_shimmer" />
-    </androidx.constraintlayout.widget.ConstraintLayout>>
+            app:layout_constraintTop_toBottomOf="@+id/game_price_shimmer" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.facebook.shimmer.ShimmerFrameLayout>

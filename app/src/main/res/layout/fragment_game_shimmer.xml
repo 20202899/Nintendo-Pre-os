@@ -6,7 +6,7 @@
     android:layout_marginHorizontal="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:shimmer_repeat_mode="restart"
-    app:shimmer_shape="linear">
+    app:shimmer_shape="radial">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -15,6 +15,51 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <HorizontalScrollView
+                android:id="@+id/horizontal_scroll"
+                android:scrollbars="none"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_shimmer"
+                    app:singleLine="true"
+                    app:singleSelection="true"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.chip.Chip
+                        app:chipBackgroundColor="@android:color/darker_gray"
+                        style="@style/Widget.Material3.Chip.Filter.Elevated"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.chip.Chip
+                        app:chipBackgroundColor="@android:color/darker_gray"
+                        style="@style/Widget.Material3.Chip.Filter.Elevated"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.chip.Chip
+                        app:chipBackgroundColor="@android:color/darker_gray"
+                        style="@style/Widget.Material3.Chip.Filter.Elevated"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.chip.Chip
+                        app:chipBackgroundColor="@android:color/darker_gray"
+                        style="@style/Widget.Material3.Chip.Filter.Elevated"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
 
             <LinearLayout
                 android:orientation="horizontal"

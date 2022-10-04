@@ -1,4 +1,4 @@
-package br.com.carlosscotus.npbrasil.framework.network.response
+package br.com.carlosscotus.npbrasil.framework.network.data
 
 import com.google.gson.annotations.SerializedName
 

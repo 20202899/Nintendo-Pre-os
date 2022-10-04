@@ -1,4 +1,4 @@
-package br.com.carlosscotus.npbrasil.framework.network.response
+package br.com.carlosscotus.npbrasil.framework.network.data
 
 data class GameDataWrapperResponse(
     val results: List<GameDataResultResponse>
