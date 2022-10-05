@@ -19,8 +19,8 @@ import br.com.carlosscotus.npbrasil.databinding.FragmentGamesBinding
 import br.com.carlosscotus.npbrasil.framework.imageloader.ImageLoader
 import br.com.carlosscotus.npbrasil.presentation.detail.GameDetailArg
 import br.com.carlosscotus.npbrasil.presentation.detail.setTitle
-import com.google.android.material.chip.ChipGroup
-import com.google.android.material.internal.CheckableGroup
+import br.com.carlosscotus.npbrasil.presentation.games.adapters.GamesAdapter
+import br.com.carlosscotus.npbrasil.presentation.games.adapters.GamesLoadMoreStateAdapter
 import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,7 +48,7 @@ class GamesFragment : Fragment() {
             scrimColor = Color.TRANSPARENT
         }
 
-        observerCollect()
+        viewModel.gameSaveFilterActionUIStateLiveData.load()
     }
 
     private val gamesAdapter: GamesAdapter by lazy {
@@ -130,7 +130,11 @@ class GamesFragment : Fragment() {
             viewModel.gameSaveFilterActionUIStateLiveData.saveFilter(
                 if (checkedIds.first() == R.id.chip_all) {
                     GameFilters.SWITCH_ONLY
-                } else GameFilters.SWITCH_SALES
+                } else if (checkedIds.first() == R.id.chip_news) {
+                    GameFilters.SWITCH_COMING_SOON
+                } else if (checkedIds.first() == R.id.chip_new_releases) {
+                    GameFilters.SWItCH_NEWS_RELEASE
+                }  else GameFilters.SWITCH_SALES
             )
         }
 
@@ -138,16 +142,6 @@ class GamesFragment : Fragment() {
             when(state) {
                 is GameSaveFilterActionUIStateLiveData.UIState.Success -> {
                     gamesAdapter.submitData(viewLifecycleOwner.lifecycle, state.data)
-                }
-            }
-        }
-    }
-
-    private fun observerCollect() {
-        lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
-                viewModel.gamesPaginate().collect { data ->
-                    gamesAdapter.submitData(lifecycle, data)
                 }
             }
         }

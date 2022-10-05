@@ -27,7 +27,7 @@ android {
             buildConfigField "String", "IMAGE_LOADER_URL", "\"https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.0/c_scale,w_300/\""
             buildConfigField "String", "API_ID", "\"U3B6GR4UA3\""
             buildConfigField "String", "API_KEY", "\"a29c6927638bfd8cee23993e51e721c9\""
-            buildConfigField "String", "PRODUCT_URL", "\"https://www.nintendo.com/_next/data/X36u8pqixIi9ME2nobPjC/pt-br/store/products/%s.json?slug=%s\""
+            buildConfigField "String", "PRODUCT_URL", "\"https://www.nintendo.com/_next/data/C36hWvjzDHZfkg_a-kdAv/pt-br/store/products/%s.json?slug=%s\""
         }
 
         release {

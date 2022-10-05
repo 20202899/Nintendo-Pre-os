@@ -23,7 +23,7 @@
     <string name="menu_favorite">Favoritar</string>
     <string name="chip_title_all">Tudo</string>
     <string name="chip_title_sales">Promoções</string>
-    <string name="chip_title_news">Novos lançamentos</string>
-    <string name="chip_title_avaiable">Disponibilidade</string>
+    <string name="chip_title_coming_soon">Em breve</string>
+    <string name="chip_title_new_releases">Novos lançamentons</string>
     <!-- Strings used for fragments for navigation -->
 </resources>

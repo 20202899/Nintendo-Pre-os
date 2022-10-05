@@ -21,6 +21,9 @@ class GameSaveFilterActionUIStateLiveData(
         get() = action.switchMap { action ->
             liveData(coroutineDispatcher) {
                 when(action) {
+                    Action.LoadNotFilter -> {
+                        emit(Action.Status.Load)
+                    }
                     is Action.SaveFilter -> {
                         saveGamesFilterUseCase(action.filter).watchStatus(
                             loading = {},
@@ -38,15 +41,21 @@ class GameSaveFilterActionUIStateLiveData(
         action.value = Action.SaveFilter(filter)
     }
 
+    fun load() {
+        action.value = Action.LoadNotFilter
+    }
+
     sealed class UIState {
         class Success(val data: PagingData<Game>) : UIState()
     }
 
     sealed class Action {
         class SaveFilter(val filter: GameFilters) : Action()
+        object LoadNotFilter : Action()
 
         sealed class Status {
             object Saved : Status()
+            object Load : Status()
         }
     }
 }

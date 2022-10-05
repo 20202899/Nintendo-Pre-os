@@ -55,14 +55,14 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_news"
-                        android:text="@string/chip_title_news"
+                        android:text="@string/chip_title_coming_soon"
                         style="@style/Widget.Material3.Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_avaiable"
-                        android:text="@string/chip_title_avaiable"
+                        android:id="@+id/chip_new_releases"
+                        android:text="@string/chip_title_new_releases"
                         style="@style/Widget.Material3.Chip.Filter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>

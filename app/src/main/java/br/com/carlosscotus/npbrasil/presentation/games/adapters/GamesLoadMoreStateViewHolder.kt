@@ -1,4 +1,4 @@
-package br.com.carlosscotus.npbrasil.presentation.games
+package br.com.carlosscotus.npbrasil.presentation.games.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

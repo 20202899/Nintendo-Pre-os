@@ -6,7 +6,7 @@
     android:layout_marginHorizontal="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:shimmer_repeat_mode="restart"
-    app:shimmer_shape="radial">
+    app:shimmer_shape="linear">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

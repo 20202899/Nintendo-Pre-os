@@ -32,7 +32,8 @@ class GamesViewModel @Inject constructor(
     val state: LiveData<GameSaveFilterActionUIStateLiveData.UIState> =
         gameSaveFilterActionUIStateLiveData.status.switchMap { action ->
             when (action) {
-                is GameSaveFilterActionUIStateLiveData.Action.Status.Saved -> {
+                GameSaveFilterActionUIStateLiveData.Action.Status.Saved,
+                GameSaveFilterActionUIStateLiveData.Action.Status.Load -> {
                     getGamesUseCase(
                         GetGamesUseCase.GetGamesParams(
                             pagingConfig = PagingConfig(
@@ -45,12 +46,4 @@ class GamesViewModel @Inject constructor(
                 }
             }
         }
-
-    fun gamesPaginate(): Flow<PagingData<Game>> = getGamesUseCase(
-        GetGamesUseCase.GetGamesParams(
-            pagingConfig = PagingConfig(
-                pageSize = NUMBER_PER_PAGE
-            )
-        )
-    ).cachedIn(viewModelScope)
 }

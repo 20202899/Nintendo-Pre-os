@@ -83,7 +83,7 @@ class GameDetailFragment : Fragment() {
                 }
                 is GameDetailActionUIStateLiveData.UIState.Error -> {
                     binding.fragmentGameDetailShimmer.root.stopShimmer()
-                    UI_STATE_ERROR
+                    UI_STATE_SUCCESS
                 }
             }
         }
@@ -106,6 +106,7 @@ class GameDetailFragment : Fragment() {
                     target: Target<Bitmap>?,
                     isFirstResource: Boolean
                 ): Boolean {
+                    startPostponedEnterTransition()
                     return false
                 }
 
