@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
-inline fun <T : ListItem, VH : GenericViewHolder<T>> getGenericAdapter(
+inline fun <T : ListItem, VH : GenericViewHolder<T>> getGenericAdapterOf(
     crossinline createViewHolder: (ViewGroup) -> VH
 ): ListAdapter<T, VH> {
     return object : ListAdapter<T, VH>(GenericDiffCallback()) {
