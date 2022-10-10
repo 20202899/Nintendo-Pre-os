@@ -15,6 +15,10 @@ class GameDetailActionUIStateLiveData(
     private val dispatcher: CoroutineDispatcher
 ) {
 
+    private var _game: Game? = null
+    val game: Game
+        get() = _game!!
+
     private val action: MutableLiveData<Action> = MutableLiveData()
     val state: LiveData<UIState>
         get() = action.switchMap { action ->
@@ -27,6 +31,7 @@ class GameDetailActionUIStateLiveData(
                                     emit(UIState.Loading)
                                 },
                                 success = { game ->
+                                    _game = game
                                     emit(UIState.Success(game))
                                 },
                                 error = { throwable ->

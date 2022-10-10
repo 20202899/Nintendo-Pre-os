@@ -33,4 +33,14 @@ interface UseCaseModule {
     fun bindSaveGamesFilterUseCase(
         saveGamesFilterUseCase: SaveGamesFilterUseCaseImpl
     ): SaveGamesFilterUseCase
+
+    @Binds
+    fun bindHasFavoriteUseCase(
+        hasFavoriteUseCase: HasFavoriteUseCaseImpl
+    ): HasFavoriteUseCase
+
+    @Binds
+    fun binRemoveFavoriteUseCase(
+        removeFavoriteUseCase: RemoveFavoriteUseCaseImpl
+    ): RemoveFavoriteUseCase
 }

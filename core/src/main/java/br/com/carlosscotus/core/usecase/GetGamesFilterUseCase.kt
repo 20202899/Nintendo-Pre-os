@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 interface GetGamesFilterUseCase {
-   suspend operator fun invoke(params: Unit): Flow<GameFilters>
+    suspend operator fun invoke(params: Unit): Flow<GameFilters>
 }
 
 class GetGamesFilterUseCaseImpl @Inject constructor(
@@ -17,6 +17,6 @@ class GetGamesFilterUseCaseImpl @Inject constructor(
 
     override suspend fun createFlowObservable(params: Unit): Flow<GameFilters> =
         storageRepository.sorting.map {
-        GameFilters.fromString(it)
-    }
+            if (it.isEmpty()) GameFilters.SWITCH_ONLY else GameFilters.fromString(it)
+        }
 }

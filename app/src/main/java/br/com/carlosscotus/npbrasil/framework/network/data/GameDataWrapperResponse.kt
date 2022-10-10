@@ -38,7 +38,7 @@ data class GameDataResponse(
     val softwarePublisher: String,
     val createdAt: String,
     val collectionPriceRange: String,
-    val description: String,
+    val description: String?,
     val exclusive: Boolean,
     val featuredProduct: Boolean,
     val nsuid: String,

@@ -12,8 +12,13 @@ import javax.inject.Inject
 class RoomFavoritesDataSource @Inject constructor(
     private val favoriteDao: FavoriteDao
 ) : FavoritesLocalDataSource {
+
     override fun fetchFavorites(): Flow<List<Game>> {
         return favoriteDao.getFavorites().map { it.toGames() }
+    }
+
+    override suspend fun hasFavorite(gameId: String): Boolean {
+        return favoriteDao.hasFavorite(gameId) != null
     }
 
     override suspend fun saveFavorite(game: Game) {
@@ -32,6 +37,9 @@ class RoomFavoritesDataSource @Inject constructor(
         featured,
         priceDiscount,
         discountPercentage,
-        hasDiscount
+        hasDiscount,
+        description,
+        productId,
+        releaseDate
     )
 }

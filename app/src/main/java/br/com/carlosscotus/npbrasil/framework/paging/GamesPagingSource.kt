@@ -52,7 +52,7 @@ class GamesPagingSource(
                                 game.price.regPrice
                             ),
                             hasDiscount = game.price.salePrice != null,
-                            description = game.description,
+                            description = game.description ?: String(),
                             productId = game.urlKey
                         )
                     }

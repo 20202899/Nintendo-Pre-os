@@ -10,5 +10,6 @@ data class Game(
     val discountPercentage: String,
     val hasDiscount: Boolean = false,
     val description: String = "",
-    val productId: String = ""
+    val productId: String = "",
+    val releaseDate: String = ""
 )

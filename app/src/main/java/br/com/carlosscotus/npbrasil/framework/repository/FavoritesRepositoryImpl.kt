@@ -9,8 +9,13 @@ import javax.inject.Inject
 class FavoritesRepositoryImpl @Inject constructor(
     private val favoritesLocalDataSource: FavoritesLocalDataSource
 ) : FavoritesRepository {
+
     override fun getFavorites(): Flow<List<Game>> {
         return favoritesLocalDataSource.fetchFavorites()
+    }
+
+    override suspend fun hasFavorite(gameId: String): Boolean {
+        return favoritesLocalDataSource.hasFavorite(gameId)
     }
 
     override suspend fun saveFavorite(game: Game) {

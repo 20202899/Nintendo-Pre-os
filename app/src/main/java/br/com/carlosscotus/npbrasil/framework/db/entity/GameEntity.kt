@@ -13,7 +13,10 @@ data class GameEntity(
     val featured: String?,
     var priceDiscount: String?,
     var discountPercentage: String,
-    var hasDiscount: Boolean = false
+    var hasDiscount: Boolean = false,
+    val description: String = "",
+    val productId: String = "",
+    val releaseDate: String = ""
 )
 
 fun List<GameEntity>.toGames() = map {
@@ -25,6 +28,25 @@ fun List<GameEntity>.toGames() = map {
         it.featured,
         it.priceDiscount,
         it.discountPercentage,
-        it.hasDiscount
+        it.hasDiscount,
+        it.description,
+        it.productId,
+        it.releaseDate
+    )
+}
+
+fun GameEntity.toGame() = let {
+    Game(
+        it.id,
+        it.title,
+        it.imageUrl,
+        it.price,
+        it.featured,
+        it.priceDiscount,
+        it.discountPercentage,
+        it.hasDiscount,
+        it.description,
+        it.productId,
+        it.releaseDate
     )
 }

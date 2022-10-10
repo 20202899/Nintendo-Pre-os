@@ -25,5 +25,6 @@
     <string name="chip_title_sales">Promoções</string>
     <string name="chip_title_coming_soon">Em breve</string>
     <string name="chip_title_new_releases">Novos lançamentons</string>
+    <string name="notify_me">Notificar promoção</string>
     <!-- Strings used for fragments for navigation -->
 </resources>

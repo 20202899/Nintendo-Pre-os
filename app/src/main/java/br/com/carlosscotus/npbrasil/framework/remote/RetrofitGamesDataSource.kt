@@ -27,7 +27,7 @@ class RetrofitGamesDataSource @Inject constructor(
             val prices = it.prices
 
             Game(
-                it.id,
+                it.sku,
                 it.name,
                 it.productImage.publicId,
                 if (prices.minimum.discounted)
@@ -38,7 +38,8 @@ class RetrofitGamesDataSource @Inject constructor(
                 prices.minimum.amountOff.formatPercentageCurrency(),
                 prices.minimum.discounted,
                 it.description,
-                productId
+                productId,
+                it.releaseDate
             )
         }
 }

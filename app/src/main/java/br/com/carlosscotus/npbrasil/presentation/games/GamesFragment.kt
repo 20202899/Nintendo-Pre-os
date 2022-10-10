@@ -2,14 +2,13 @@ package br.com.carlosscotus.npbrasil.presentation.games
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.*
-import androidx.core.view.MenuProvider
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
@@ -60,7 +59,14 @@ class GamesFragment : Fragment() {
                             id,
                             title,
                             imageUrl,
-                            productId
+                            price,
+                            featured,
+                            priceDiscount,
+                            discountPercentage,
+                            hasDiscount,
+                            description,
+                            productId,
+                            releaseDate
                         ),
                         game.title
                     ),
@@ -85,8 +91,8 @@ class GamesFragment : Fragment() {
 
         setTitle(getString(R.string.title_home))
 
-        setupMenu()
         setupRecyclerview()
+        setDefaultFilter()
         setLoadObserverDetailUIState()
         setupCardViewConnect()
         observerAdapterState()
@@ -107,21 +113,15 @@ class GamesFragment : Fragment() {
         }
     }
 
-    private fun setupMenu() {
-        requireActivity().addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_top, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return false
-            }
-        }, viewLifecycleOwner, Lifecycle.State.STARTED)
-    }
-
     private fun setupCardViewConnect() {
         binding.fragmentGameError.refresh.setOnClickListener {
             gamesAdapter.refresh()
+        }
+    }
+
+    private fun setDefaultFilter() {
+        viewModel.setDefaultFilter {
+            binding.chipGroup.check(it)
         }
     }
 
@@ -134,12 +134,12 @@ class GamesFragment : Fragment() {
                     GameFilters.SWITCH_COMING_SOON
                 } else if (checkedIds.first() == R.id.chip_new_releases) {
                     GameFilters.SWItCH_NEWS_RELEASE
-                }  else GameFilters.SWITCH_SALES
+                } else GameFilters.SWITCH_SALES
             )
         }
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
-            when(state) {
+            when (state) {
                 is GameSaveFilterActionUIStateLiveData.UIState.Success -> {
                     gamesAdapter.submitData(viewLifecycleOwner.lifecycle, state.data)
                 }

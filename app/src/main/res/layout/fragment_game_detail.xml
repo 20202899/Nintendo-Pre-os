@@ -5,21 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/image_game"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        app:layout_constraintDimensionRatio="H, 16:9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fab_notify"-->
+<!--        android:src="@drawable/ic_round_add_24"-->
+<!--        android:layout_margin="@dimen/fab_margin"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/image_game"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/image_game"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/image_game"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"/>-->
 
     <ViewFlipper
         android:id="@+id/view_flipper"
-        app:layout_constraintTop_toBottomOf="@+id/image_game"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -40,6 +38,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/image_game"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    app:layout_constraintDimensionRatio="H, 16:9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/game_release_date"
+                    android:gravity="center"
+                    android:drawablePadding="8dp"
+                    android:drawableStart="@drawable/ic_round_calendar_month_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/fab_margin"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_game"
+                    tools:text="Teste"
+                    tools:ignore="UseCompatTextViewDrawableXml" />
+
                 <TextView
                     android:id="@+id/game_price"
                     android:layout_width="wrap_content"
@@ -50,42 +77,47 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/game_release_date"
                     tools:text="Teste" />
 
                 <TextView
                     android:id="@+id/game_price_discount"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/fab_margin"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     app:layout_constraintBottom_toBottomOf="@+id/game_price"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toEndOf="@+id/game_price"
                     app:layout_constraintTop_toTopOf="@+id/game_price"
                     tools:text="Teste" />
+
+                <View
+                    android:id="@+id/prices_divider"
+                    android:paddingTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/game_price"
+                    app:layout_constraintStart_toStartOf="@+id/game_price"
+                    app:layout_constraintEnd_toEndOf="@+id/game_price_discount"
+                    android:background="?attr/colorPrimaryContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"/>
 
                 <TextView
                     android:id="@+id/game_description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/fab_margin"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/game_price"
+                    app:layout_constraintTop_toBottomOf="@+id/prices_divider"
                     tools:text="Teste" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
 
     </ViewFlipper>
-
-    <include
-        android:id="@+id/layout_more_options"
-        layout="@layout/layout_more_options"
-        android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

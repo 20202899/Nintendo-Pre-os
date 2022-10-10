@@ -9,7 +9,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-interface AddFavoriteUseCase {
+interface RemoveFavoriteUseCase {
+
     operator fun invoke(params: Params): Flow<ResultStatus<Unit>>
 
     data class Params(
@@ -27,27 +28,30 @@ interface AddFavoriteUseCase {
     )
 }
 
-class AddFavoriteUseCaseImpl @Inject constructor(
-    private val repository: FavoritesRepository
-) : UseCase<AddFavoriteUseCase.Params, Unit>(), AddFavoriteUseCase {
-    override suspend fun doWork(params: AddFavoriteUseCase.Params): ResultStatus<Unit> {
-        return withContext(Dispatchers.IO) {
-            repository.saveFavorite(params.run {
-                Game(
-                    id,
-                    title,
-                    imageUrl,
-                    price,
-                    featured,
-                    priceDiscount,
-                    discountPercentage,
-                    hasDiscount,
-                    description,
-                    productId,
-                    releaseDate
-                )
-            })
+class RemoveFavoriteUseCaseImpl @Inject constructor(
+    private val favoritesRepository: FavoritesRepository
+) : UseCase<RemoveFavoriteUseCase.Params, Unit>(), RemoveFavoriteUseCase {
+
+    override suspend fun doWork(params: RemoveFavoriteUseCase.Params): ResultStatus<Unit> =
+        withContext(Dispatchers.IO) {
+            favoritesRepository.removeFavorite(
+                params.run {
+                    Game(
+                        id,
+                        title,
+                        imageUrl,
+                        price,
+                        featured,
+                        priceDiscount,
+                        discountPercentage,
+                        hasDiscount,
+                        description,
+                        productId,
+                        releaseDate
+                    )
+                }
+            )
+
             ResultStatus.Success(Unit)
         }
-    }
 }

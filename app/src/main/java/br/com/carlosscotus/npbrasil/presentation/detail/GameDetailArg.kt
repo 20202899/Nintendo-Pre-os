@@ -10,5 +10,12 @@ data class GameDetailArg(
     val id: String,
     val title: String,
     val imageUrl: String,
-    val productId: String
+    var price: String,
+    val featured: String?,
+    val priceDiscount: String?,
+    val discountPercentage: String,
+    val hasDiscount: Boolean = false,
+    val description: String = "",
+    val productId: String = "",
+    val releaseDate: String = ""
 ) : Parcelable

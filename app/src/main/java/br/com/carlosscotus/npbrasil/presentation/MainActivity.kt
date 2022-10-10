@@ -43,8 +43,6 @@ class MainActivity : AppCompatActivity() {
                 binding.toolbar.setNavigationIcon(R.drawable.ic_round_arrow_back_ios_new_24)
             }
         }
-
-        DynamicColors.applyToActivitiesIfAvailable(application)
     }
 
     fun setTitle(text: String) {
@@ -54,5 +52,9 @@ class MainActivity : AppCompatActivity() {
 
     fun setCollapsingToolbar(isCollapse: Boolean = true, animated: Boolean) {
         binding.appbar.setExpanded(isCollapse, animated)
+    }
+
+    fun cleanMenu() {
+        binding.toolbar.menu.clear()
     }
 }

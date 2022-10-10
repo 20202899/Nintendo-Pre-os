@@ -5,21 +5,25 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
 import android.text.Html
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.core.text.HtmlCompat
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.navArgs
 import br.com.carlosscotus.npbrasil.BuildConfig
+import br.com.carlosscotus.npbrasil.R
 import br.com.carlosscotus.npbrasil.databinding.FragmentGameDetailBinding
 import br.com.carlosscotus.npbrasil.framework.imageloader.ImageLoader
 import br.com.carlosscotus.npbrasil.presentation.MainActivity
+import br.com.carlosscotus.npbrasil.utils.DateUtil
+import br.com.carlosscotus.npbrasil.utils.formatToString
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.google.android.material.color.DynamicColors
 import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,12 +36,62 @@ class GameDetailFragment : Fragment() {
     private val binding: FragmentGameDetailBinding
         get() = _binding!!
 
+    private var menu: Menu? = null
+    private var menuInflater: MenuInflater? = null
+
     @Inject
     lateinit var imageLoader: ImageLoader
 
-    private val gameDetailViewModel: GameDetailViewModel by viewModels()
+    private val viewModel: GameDetailViewModel by viewModels()
 
     private val gameDetailFragmentArgs: GameDetailFragmentArgs by navArgs()
+
+    private val menuProvider = object : MenuProvider {
+        override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+            this@GameDetailFragment.menu = menu
+            this@GameDetailFragment.menuInflater = menuInflater
+        }
+
+        override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+
+            when(menuItem.itemId) {
+                R.id.add_favorite -> {
+                    viewModel.addAndCheckFavoriteActionUIStateLiveData.addFavorite(
+                        gameDetailFragmentArgs.gameDetailArgs
+                    )
+                }
+            }
+
+            return false
+        }
+    }
+
+    private var loadImageProvider = object : RequestListener<Bitmap> {
+        override fun onLoadFailed(
+            e: GlideException?,
+            model: Any?,
+            target: Target<Bitmap>?,
+            isFirstResource: Boolean
+        ): Boolean {
+            startPostponedEnterTransition()
+            return false
+        }
+
+        override fun onResourceReady(
+            resource: Bitmap?,
+            model: Any?,
+            target: Target<Bitmap>?,
+            dataSource: DataSource?,
+            isFirstResource: Boolean
+        ): Boolean {
+            startPostponedEnterTransition()
+            setTitle(gameDetailFragmentArgs.gameDetailArgs.title)
+            setCollapsingToolbar()
+            setFavoriteAddObserver()
+            return false
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,34 +116,62 @@ class GameDetailFragment : Fragment() {
         binding.imageGame.transitionName = gameDetailFragmentArgs.gameDetailArgs.id
 
         postponeEnterTransition()
+        setupMenu()
         setLoadObserverDetailUIState()
+
+        DynamicColors.applyToActivitiesIfAvailable(requireActivity().application)
+    }
+
+    private fun setupMenu() {
+        requireActivity().addMenuProvider(menuProvider, viewLifecycleOwner, Lifecycle.State.STARTED)
     }
 
     private fun setLoadObserverDetailUIState() {
-        gameDetailViewModel.gameDetailActionUIState.load(
-            gameDetailFragmentArgs.gameDetailArgs.productId
-        )
+        viewModel.gameDetailActionUIState.run {
+            load(gameDetailFragmentArgs.gameDetailArgs.productId)
 
-        gameDetailViewModel.gameDetailActionUIState.state.observe(viewLifecycleOwner) { state ->
-            binding.viewFlipper.displayedChild = when(state) {
-                GameDetailActionUIStateLiveData.UIState.Loading -> {
-                    binding.fragmentGameDetailShimmer.root.startShimmer()
-                    UI_STATE_LOADING
-                }
-                is GameDetailActionUIStateLiveData.UIState.Success -> {
-                    binding.fragmentGameDetailShimmer.root.stopShimmer()
-                    setupGameDetail(state)
-                    UI_STATE_SUCCESS
-                }
-                is GameDetailActionUIStateLiveData.UIState.Error -> {
-                    binding.fragmentGameDetailShimmer.root.stopShimmer()
-                    UI_STATE_SUCCESS
+            state.observe(viewLifecycleOwner) { state ->
+                binding.viewFlipper.displayedChild = when(state) {
+                    GameDetailActionUIStateLiveData.UIState.Loading -> {
+                        binding.fragmentGameDetailShimmer.root.startShimmer()
+                        UI_STATE_LOADING
+                    }
+                    is GameDetailActionUIStateLiveData.UIState.Success -> {
+                        binding.fragmentGameDetailShimmer.root.stopShimmer()
+                        setupGameDetail(state)
+                        UI_STATE_SUCCESS
+                    }
+                    is GameDetailActionUIStateLiveData.UIState.Error -> {
+                        binding.fragmentGameDetailShimmer.root.stopShimmer()
+                        UI_STATE_SUCCESS
+                    }
                 }
             }
         }
     }
 
     private fun setupGameDetail(state: GameDetailActionUIStateLiveData.UIState.Success) {
+        binding.gameDescription.text = Html.fromHtml(
+            state.data.description,
+            HtmlCompat.FROM_HTML_MODE_LEGACY
+        )
+
+        state.data.releaseDate.formatToString(
+            from = DateUtil.DateFormat.FORMAT_DATE_API,
+            to = DateUtil.DateFormat.FORMAT_DATE_UI
+        )?.let { dateString ->
+            binding.gameReleaseDate.text = dateString
+        }
+
+        if (!state.data.hasDiscount) {
+            binding.gamePrice.text = state.data.price
+            binding.gamePrice.paintFlags = Paint.ANTI_ALIAS_FLAG
+        } else {
+            binding.gamePrice.text = state.data.price
+            binding.gamePriceDiscount.text = state.data.priceDiscount
+            binding.gamePrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            binding.gamePriceDiscount.visibility = View.VISIBLE
+        }
 
         imageLoader.load(
             binding.imageGame,
@@ -99,49 +181,31 @@ class GameDetailFragment : Fragment() {
                     "c_scale,w_600"
                 )
             }${gameDetailFragmentArgs.gameDetailArgs.imageUrl}",
-            object : RequestListener<Bitmap> {
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: Target<Bitmap>?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    startPostponedEnterTransition()
-                    return false
-                }
-
-                override fun onResourceReady(
-                    resource: Bitmap?,
-                    model: Any?,
-                    target: Target<Bitmap>?,
-                    dataSource: DataSource?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    startPostponedEnterTransition()
-                    setTitle(gameDetailFragmentArgs.gameDetailArgs.title)
-                    setCollapsingToolbar()
-                    binding.gameDescription.text = Html.fromHtml(
-                        state.data.description,
-                        HtmlCompat.FROM_HTML_MODE_LEGACY
-                    )
-
-                    if (!state.data.hasDiscount) {
-                        binding.gamePrice.text = state.data.price
-                        binding.gamePrice.paintFlags = Paint.ANTI_ALIAS_FLAG
-                    } else {
-                        binding.gamePrice.text = state.data.price
-                        binding.gamePriceDiscount.text = state.data.priceDiscount
-                        binding.gamePrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-                    }
-                    return false
-                }
-
-            }
+            loadImageProvider
         )
+    }
+
+    private fun setFavoriteAddObserver() {
+        viewModel.addAndCheckFavoriteActionUIStateLiveData.run {
+            hasFavorite(gameDetailFragmentArgs.gameDetailArgs.id)
+
+            state.observe(viewLifecycleOwner) { uiState ->
+                when(uiState) {
+                    is AddAndCheckFavoriteActionUIStateLiveData.State.MenuFavorite -> {
+                        cleanMenu()
+                        menuInflater?.inflate(uiState.menu, menu)
+                    }
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        requireActivity().removeMenuProvider(menuProvider)
+        cleanMenu()
+        menu = null
+        menuInflater = null
         _binding = null
     }
 
@@ -158,4 +222,8 @@ fun Fragment.setTitle(text: String) {
 
 fun Fragment.setCollapsingToolbar(isCollapse: Boolean = true, animated: Boolean = false) {
     (requireActivity() as? MainActivity)?.setCollapsingToolbar(isCollapse, animated)
+}
+
+fun Fragment.cleanMenu() {
+    (requireActivity() as? MainActivity)?.cleanMenu()
 }

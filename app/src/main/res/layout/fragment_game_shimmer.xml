@@ -35,24 +35,28 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.chip.Chip
+                        android:enabled="false"
                         app:chipBackgroundColor="@android:color/darker_gray"
                         style="@style/Widget.Material3.Chip.Filter.Elevated"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"/>
 
                     <com.google.android.material.chip.Chip
+                        android:enabled="false"
                         app:chipBackgroundColor="@android:color/darker_gray"
                         style="@style/Widget.Material3.Chip.Filter.Elevated"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"/>
 
                     <com.google.android.material.chip.Chip
+                        android:enabled="false"
                         app:chipBackgroundColor="@android:color/darker_gray"
                         style="@style/Widget.Material3.Chip.Filter.Elevated"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"/>
 
                     <com.google.android.material.chip.Chip
+                        android:enabled="false"
                         app:chipBackgroundColor="@android:color/darker_gray"
                         style="@style/Widget.Material3.Chip.Filter.Elevated"
                         android:layout_width="100dp"
