@@ -40,7 +40,12 @@ interface UseCaseModule {
     ): HasFavoriteUseCase
 
     @Binds
-    fun binRemoveFavoriteUseCase(
+    fun bindRemoveFavoriteUseCase(
         removeFavoriteUseCase: RemoveFavoriteUseCaseImpl
     ): RemoveFavoriteUseCase
+
+    @Binds
+    fun bindGetFavoritesUseCase(
+        getFavoritesUseCase: GetFavoritesUseCaseImpl
+    ): GetFavoritesUseCase
 }

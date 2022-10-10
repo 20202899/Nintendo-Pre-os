@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.gamesFragment,
-                R.id.searchFragment
+                R.id.searchFragment,
+                R.id.favoritesFragment
             )
         )
 

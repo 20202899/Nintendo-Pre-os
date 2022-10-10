@@ -3,6 +3,7 @@ package br.com.carlosscotus.npbrasil.framework.db.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import br.com.carlosscotus.core.domain.model.Game
+import java.util.*
 
 @Entity(tableName = "games")
 data class GameEntity(
@@ -16,7 +17,8 @@ data class GameEntity(
     var hasDiscount: Boolean = false,
     val description: String = "",
     val productId: String = "",
-    val releaseDate: String = ""
+    val releaseDate: String = "",
+    val dateTime: Long = Date().time
 )
 
 fun List<GameEntity>.toGames() = map {

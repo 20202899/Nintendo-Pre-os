@@ -1,19 +1,12 @@
 package br.com.carlosscotus.npbrasil.presentation.detail
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.MenuRes
-import androidx.lifecycle.*
-import br.com.carlosscotus.core.domain.model.Game
+import androidx.lifecycle.ViewModel
 import br.com.carlosscotus.core.usecase.AddFavoriteUseCase
 import br.com.carlosscotus.core.usecase.GetGameDetailUseCase
 import br.com.carlosscotus.core.usecase.HasFavoriteUseCase
 import br.com.carlosscotus.core.usecase.RemoveFavoriteUseCase
-import br.com.carlosscotus.npbrasil.R
-import br.com.carlosscotus.npbrasil.framework.extensions.watchStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
