@@ -23,7 +23,7 @@ class FavoritesFragment : Fragment() {
     @Inject
     lateinit var imageLoader: ImageLoader
 
-    val viewModel: FavoritesViewModel by viewModels()
+    private val viewModel: FavoritesViewModel by viewModels()
 
     private val favoritesAdapter: FavoritesAdapter by lazy {
         FavoritesAdapter(imageLoader)
