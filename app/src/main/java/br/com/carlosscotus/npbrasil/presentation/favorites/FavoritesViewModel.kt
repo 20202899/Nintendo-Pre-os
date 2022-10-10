@@ -24,9 +24,10 @@ class FavoritesViewModel @Inject constructor(
                                 // TODO: tratar erro
                             }
                             .collect { games ->
-                                emit(if (games.isEmpty()) {
+                                val favorites = games.map { it.toFavoriteUI() }
+                                emit(if (favorites.isEmpty()) {
                                     UIState.Empty
-                                } else UIState.Success(games))
+                                } else UIState.Success(favorites))
                             }
                     }
                 }
@@ -42,7 +43,7 @@ class FavoritesViewModel @Inject constructor(
     }
 
     sealed class UIState {
-        data class Success(val list: List<Game>) : UIState()
+        data class Success(val list: List<FavoriteUI>) : UIState()
         object Empty : UIState()
     }
 }

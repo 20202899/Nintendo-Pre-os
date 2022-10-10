@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ListAdapter
 import br.com.carlosscotus.npbrasil.R
 import br.com.carlosscotus.npbrasil.databinding.FragmentFavoritesBinding
 import br.com.carlosscotus.npbrasil.framework.imageloader.ImageLoader
+import br.com.carlosscotus.npbrasil.presentation.common.getGenericAdapterOf
 import br.com.carlosscotus.npbrasil.presentation.detail.setTitle
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -25,8 +27,8 @@ class FavoritesFragment : Fragment() {
 
     private val viewModel: FavoritesViewModel by viewModels()
 
-    private val favoritesAdapter: FavoritesAdapter by lazy {
-        FavoritesAdapter(imageLoader)
+    private val favoritesAdapter by lazy {
+        getGenericAdapterOf { FavoriteViewHolder.create(it, imageLoader) }
     }
 
     override fun onCreateView(
