@@ -5,39 +5,35 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
 import android.text.Html
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.navArgs
 import br.com.carlosscotus.npbrasil.BuildConfig
-import br.com.carlosscotus.npbrasil.R
 import br.com.carlosscotus.npbrasil.databinding.FragmentGameDetailBinding
 import br.com.carlosscotus.npbrasil.framework.imageloader.ImageLoader
-import br.com.carlosscotus.npbrasil.presentation.MainActivity
+import br.com.carlosscotus.npbrasil.presentation.BaseFragment
 import br.com.carlosscotus.npbrasil.utils.DateUtil
 import br.com.carlosscotus.npbrasil.utils.formatToString
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.google.android.material.color.DynamicColors
 import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class GameDetailFragment : Fragment() {
+class GameDetailFragment : BaseFragment() {
 
     private var _binding: FragmentGameDetailBinding? = null
     private val binding: FragmentGameDetailBinding
         get() = _binding!!
-
-    private var menu: Menu? = null
-    private var menuInflater: MenuInflater? = null
 
     @Inject
     lateinit var imageLoader: ImageLoader
@@ -45,26 +41,6 @@ class GameDetailFragment : Fragment() {
     private val viewModel: GameDetailViewModel by viewModels()
 
     private val gameDetailFragmentArgs: GameDetailFragmentArgs by navArgs()
-
-    private val menuProvider = object : MenuProvider {
-        override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-            this@GameDetailFragment.menu = menu
-            this@GameDetailFragment.menuInflater = menuInflater
-        }
-
-        override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-
-            when(menuItem.itemId) {
-                R.id.add_favorite -> {
-                    viewModel.addAndCheckFavoriteActionUIStateLiveData.addFavorite(
-                        gameDetailFragmentArgs.gameDetailArgs
-                    )
-                }
-            }
-
-            return false
-        }
-    }
 
     private var loadImageProvider = object : RequestListener<Bitmap> {
         override fun onLoadFailed(
@@ -85,8 +61,6 @@ class GameDetailFragment : Fragment() {
             isFirstResource: Boolean
         ): Boolean {
             startPostponedEnterTransition()
-            setTitle(gameDetailFragmentArgs.gameDetailArgs.title)
-            setCollapsingToolbar()
             setFavoriteAddObserver()
             return false
         }
@@ -116,14 +90,8 @@ class GameDetailFragment : Fragment() {
         binding.imageGame.transitionName = gameDetailFragmentArgs.gameDetailArgs.id
 
         postponeEnterTransition()
-        setupMenu()
+        setupToolbarNavigation(binding.toolbar)
         setLoadObserverDetailUIState()
-
-        DynamicColors.applyToActivitiesIfAvailable(requireActivity().application)
-    }
-
-    private fun setupMenu() {
-        requireActivity().addMenuProvider(menuProvider, viewLifecycleOwner, Lifecycle.State.STARTED)
     }
 
     private fun setLoadObserverDetailUIState() {
@@ -192,8 +160,7 @@ class GameDetailFragment : Fragment() {
             state.observe(viewLifecycleOwner) { uiState ->
                 when(uiState) {
                     is AddAndCheckFavoriteActionUIStateLiveData.State.MenuFavorite -> {
-                        cleanMenu()
-                        menuInflater?.inflate(uiState.menu, menu)
+
                     }
                 }
             }
@@ -202,10 +169,6 @@ class GameDetailFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        requireActivity().removeMenuProvider(menuProvider)
-        cleanMenu()
-        menu = null
-        menuInflater = null
         _binding = null
     }
 
@@ -214,16 +177,4 @@ class GameDetailFragment : Fragment() {
         const val UI_STATE_SUCCESS = 1
         const val UI_STATE_ERROR = 2
     }
-}
-
-fun Fragment.setTitle(text: String) {
-    (requireActivity() as? MainActivity)?.setTitle(text)
-}
-
-fun Fragment.setCollapsingToolbar(isCollapse: Boolean = true, animated: Boolean = false) {
-    (requireActivity() as? MainActivity)?.setCollapsingToolbar(isCollapse, animated)
-}
-
-fun Fragment.cleanMenu() {
-    (requireActivity() as? MainActivity)?.cleanMenu()
 }

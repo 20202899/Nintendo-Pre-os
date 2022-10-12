@@ -11,7 +11,7 @@ object DoubleUtil {
 
     fun formatPercentageFromSubtraction(discount: Double, price: Double): String {
         val result = ceil((discount / price) * 100)
-        return  String.format(Locale("pt", "BR"), "%.0f", result) + "%"
+        return  String.format(Locale("pt", "BR"), "%.0f", 100 - result) + "%"
     }
 
     fun Double.formatPercentageCurrency(): String {

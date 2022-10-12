@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -16,8 +17,8 @@ import br.com.carlosscotus.core.data.GameFilters
 import br.com.carlosscotus.npbrasil.R
 import br.com.carlosscotus.npbrasil.databinding.FragmentGamesBinding
 import br.com.carlosscotus.npbrasil.framework.imageloader.ImageLoader
+import br.com.carlosscotus.npbrasil.presentation.BaseFragment
 import br.com.carlosscotus.npbrasil.presentation.detail.GameDetailArg
-import br.com.carlosscotus.npbrasil.presentation.detail.setTitle
 import br.com.carlosscotus.npbrasil.presentation.games.adapters.GamesAdapter
 import br.com.carlosscotus.npbrasil.presentation.games.adapters.GamesLoadMoreStateAdapter
 import com.google.android.material.transition.MaterialArcMotion
@@ -28,7 +29,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class GamesFragment : Fragment() {
+class GamesFragment : BaseFragment() {
 
     private var _binding: FragmentGamesBinding? = null
     private val binding: FragmentGamesBinding
@@ -89,8 +90,7 @@ class GamesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTitle(getString(R.string.title_home))
-
+        setupToolbarNavigation(binding.toolbar)
         setupRecyclerview()
         setDefaultFilter()
         setLoadObserverDetailUIState()

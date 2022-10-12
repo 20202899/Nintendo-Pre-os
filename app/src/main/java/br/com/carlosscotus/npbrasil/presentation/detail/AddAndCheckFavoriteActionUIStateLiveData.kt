@@ -18,6 +18,7 @@ class AddAndCheckFavoriteActionUIStateLiveData(
     private val removeFavoriteUseCase: RemoveFavoriteUseCase,
     private val coroutineDispatcher: CoroutineDispatcher
 ) {
+    
     private var isFavorited = false
 
     private val action: MutableLiveData<Action> = MutableLiveData()

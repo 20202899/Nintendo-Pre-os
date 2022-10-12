@@ -15,7 +15,7 @@
     <fragment
         android:id="@+id/gameDetailFragment"
         android:name="br.com.carlosscotus.npbrasil.presentation.detail.GameDetailFragment"
-        android:label="{titleScreen}">
+        android:label=" ">
         <argument
             android:name="GameDetailArgs"
             app:argType="br.com.carlosscotus.npbrasil.presentation.detail.GameDetailArg" />
