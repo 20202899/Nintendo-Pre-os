@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="?attr/materialCardViewOutlinedStyle"
+    app:cardUseCompatPadding="true"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_game"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.LargeComponent"
+            tools:srcCompat="@tools:sample/avatars"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="H, 16:9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/menu_more"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:backgroundTint="?attr/colorSecondaryContainer"
+            app:icon="@drawable/ic_round_more_vert_24"
+            app:fabSize="mini"
+            android:layout_margin="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:visibility="gone"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_medium"
+            android:maxLines="3"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_game"
+            tools:text="Super Mario Bros" />
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:visibility="gone"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_medium"
+            android:maxLines="2"
+            android:paddingVertical="@dimen/fab_margin"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            android:layout_marginStart="@dimen/fab_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="R$ 299,99" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

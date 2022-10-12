@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/remove_favorite"
+        android:icon="@drawable/ic_round_favorite_border_24"
+        android:title="Remover" />
+
+    <item android:id="@+id/notify_price"
+        android:icon="@drawable/ic_outline_discount_24"
+        android:title="Notificar promoção" />
+
+    <item android:id="@+id/notify_release"
+        android:icon="@drawable/ic_round_calendar_month_24"
+        android:title="Notificar lançamento" />
+</menu>

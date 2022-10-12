@@ -8,9 +8,7 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import br.com.carlosscotus.npbrasil.BuildConfig
@@ -154,13 +152,19 @@ class GameDetailFragment : BaseFragment() {
     }
 
     private fun setFavoriteAddObserver() {
+        binding.fabFavorite.setOnClickListener {
+            viewModel.addAndCheckFavoriteActionUIStateLiveData.addFavorite(
+                gameDetailFragmentArgs.gameDetailArgs
+            )
+        }
+
         viewModel.addAndCheckFavoriteActionUIStateLiveData.run {
             hasFavorite(gameDetailFragmentArgs.gameDetailArgs.id)
 
             state.observe(viewLifecycleOwner) { uiState ->
                 when(uiState) {
-                    is AddAndCheckFavoriteActionUIStateLiveData.State.MenuFavorite -> {
-
+                    is AddAndCheckFavoriteActionUIStateLiveData.State.IconFavorite -> {
+                        binding.fabFavorite.setImageResource(uiState.icon)
                     }
                 }
             }

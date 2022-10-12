@@ -17,7 +17,7 @@
     <string name="text_error">Algo deu errado :(</string>
     <string name="refresh_text">Tentar novamente</string>
     <string name="shared_item_transition">imageGame</string>
-    <string name="title_home">Início</string>
+    <string name="title_home">Jogos</string>
     <string name="title_search">Pesquisar</string>
     <string name="title_detail">Detalhes</string>
     <string name="menu_favorite">Favoritar</string>

@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fab_notify"-->
-<!--        android:src="@drawable/ic_round_add_24"-->
-<!--        android:layout_margin="@dimen/fab_margin"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/image_game"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/image_game"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/image_game"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"/>-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_favorite"
+        app:shapeAppearance="@style/FabShapeAppearance"
+        style="@style/Widget.Material3.FloatingActionButton.Large.Primary"
+        android:src="@drawable/ic_round_favorite_border_24"
+        android:layout_margin="8dp"
+        android:layout_gravity="bottom|end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"

@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/gamesFragment"
-        android:label="@string/title_home"
+        android:label="@string/app_name"
         android:name="br.com.carlosscotus.npbrasil.presentation.games.GamesFragment">
         <action
             android:id="@+id/action_gamesFragment_to_gameDetailFragment"

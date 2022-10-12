@@ -8,12 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.carlosscotus.npbrasil.databinding.FragmentFavoritesBinding
 import br.com.carlosscotus.npbrasil.framework.imageloader.ImageLoader
+import br.com.carlosscotus.npbrasil.presentation.BaseFragment
 import br.com.carlosscotus.npbrasil.presentation.common.getGenericAdapterOf
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FavoritesFragment : Fragment() {
+class FavoritesFragment : BaseFragment() {
 
     private var _binding: FragmentFavoritesBinding? = null
     private val binding: FragmentFavoritesBinding
@@ -40,6 +41,8 @@ class FavoritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupToolbarNavigation(binding.toolbar)
 
         binding.recyclerview.run {
             setHasFixedSize(false)

@@ -1,6 +1,6 @@
 package br.com.carlosscotus.npbrasil.presentation.detail
 
-import androidx.annotation.MenuRes
+import androidx.annotation.DrawableRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
@@ -19,7 +19,7 @@ class AddAndCheckFavoriteActionUIStateLiveData(
     private val coroutineDispatcher: CoroutineDispatcher
 ) {
     
-    private var isFavorited = false
+    private var isFavorite = false
 
     private val action: MutableLiveData<Action> = MutableLiveData()
     val state: LiveData<State>
@@ -29,12 +29,12 @@ class AddAndCheckFavoriteActionUIStateLiveData(
                     is Action.CheckFavorite -> {
                         hasFavoriteUseCase(action.gameId).watchStatus(
                             success = { isAdded ->
-                                var menu = R.menu.menu_top_favorite
+                                var icon = R.drawable.ic_round_favorite_border_24
                                 if(isAdded) {
-                                    menu = R.menu.menu_top_favorited
+                                    icon = R.drawable.ic_round_favorite_24
                                 }
-                                isFavorited = isAdded
-                                emit(State.MenuFavorite(menu))
+                                isFavorite = isAdded
+                                emit(State.IconFavorite(icon))
                             },
                             error = {
                                 // TODO: implementar erro
@@ -59,8 +59,8 @@ class AddAndCheckFavoriteActionUIStateLiveData(
                                 )
                             ).watchStatus(
                                 success = {
-                                    isFavorited = !isFavorited
-                                    emit(State.MenuFavorite(R.menu.menu_top_favorite))
+                                    isFavorite = !isFavorite
+                                    emit(State.IconFavorite(R.drawable.ic_round_favorite_border_24))
                                 },
                                 error = {
                                     // TODO: implementar erro
@@ -86,8 +86,8 @@ class AddAndCheckFavoriteActionUIStateLiveData(
                                 )
                             ).watchStatus(
                                 success = {
-                                    isFavorited = !isFavorited
-                                    emit(State.MenuFavorite(R.menu.menu_top_favorited))
+                                    isFavorite = !isFavorite
+                                    emit(State.IconFavorite(R.drawable.ic_round_favorite_24))
                                 },
                                 error = {
                                     // TODO: implementar erro
@@ -100,7 +100,7 @@ class AddAndCheckFavoriteActionUIStateLiveData(
         }
 
     fun addFavorite(game: GameDetailArg) {
-        if (isFavorited) {
+        if (isFavorite) {
             action.value = Action.RemoveFavorite(game)
         } else {
             action.value = Action.AddFavorite(game)
@@ -118,6 +118,6 @@ class AddAndCheckFavoriteActionUIStateLiveData(
     }
 
     sealed class State {
-        data class MenuFavorite(@MenuRes val menu: Int) : State()
+        data class IconFavorite(@DrawableRes val icon: Int) : State()
     }
 }
